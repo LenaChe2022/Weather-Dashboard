@@ -1,0 +1,44 @@
+:root {
+    --blue: #0e8080;
+    --darkblue: #046b7d;
+    --seablue: #90c3cc;
+    --lightseablue: #aab9bf;
+    --light: #f2f2f2;
+  }
+
+  .navbar{
+    text-align: center;
+  }
+  
+  .custom-navbar {
+    background-color: var(--darkblue);
+    font-size: 1.5 rem;
+  }
+  
+  .custom-btn {
+    background-color: var(--seablue);
+    color: black;
+    margin: 5px;
+  }
+
+  .day-card{
+    background-color: var(--darkblue);
+    color: var(--light);
+    margin: 5px;
+  }
+
+  .city-btn {
+    background-color: var(--light);
+    color: var(--blue);
+    margin: 5px;
+  }
+
+  .custom-row {
+    margin: 10px;
+  }
+  
+  .custom-btn:hover {
+    background-color: var(--darkblue);
+    color: var(--light);
+  }
+  
