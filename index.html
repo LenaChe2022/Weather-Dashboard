@@ -43,7 +43,7 @@
         <option value="Chicago">
         </datalist>
         <!-- create and apply a custom class name "custom-btn" -->
-        <button class="btn btn-lg custom-btn">Search</button>
+        <button class="btn btn-lg custom-btn" id="search-button">Search</button>
 
         <button class="btn btn-lg city-btn">New York</button>
         <button class="btn btn-lg city-btn">New York</button>
@@ -57,8 +57,8 @@
         <div class="col-sm-9">
 
             <div class="row custom-row border">
-            <h2>City (Date)</h2>
-            <div>Temp:</div>
+            <h2 id="citi-and-date"></h2>
+            <div id="current-temp"></div>
             <div>Wind:</div>
             <div>Humidity:</div>
             </div>
@@ -116,11 +116,17 @@
       
 
     </div>
-  </body>
-
-  <script
+    <script src="script.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
+      integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U="
+      crossorigin="anonymous"
+    ></script>
+    <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
     crossorigin="anonymous"
   ></script>
+  </body>
+
 </html>
