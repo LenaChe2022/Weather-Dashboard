@@ -15,6 +15,7 @@ N/A
 ## Usage
 
 To use this Weather-Dashboard application, follow the link:
+https://lenache2022.github.io/Weather-Dashboard/
 
 You will open a web page, where you can see the weather outlook for multiple cities. When you search for the city, you may see the future weather conditions for that city, including the temperature, the wind speed, and humidity.
 
