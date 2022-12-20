@@ -23,6 +23,10 @@ for (let i = 0; i < locationList.length; i++) {
 }
 
 var usersInputs = loadObjectFromLocalStorage("usersCities");
+if(usersInputs === null){
+ usersInputs = [];
+}
+    
 
 //try alternative
 function saveObjectToLocalStorage(key, obj){
@@ -143,7 +147,7 @@ searchButton.addEventListener('click', function(){
 
     console.log("searchButton.addEventListener");
     
-    if (usersInputs.includes(inputValue)){
+    if (usersInputs != null && usersInputs.includes(inputValue)){
         console.log('exist');
     } else {
         usersInputs.push(inputValue);
@@ -163,13 +167,14 @@ getApi(inputEl.value);
 });
 
 // run getApi function when user button clicked
+
 var userButtonEl = document.getElementById("user-button");
 console.log(userButtonEl);
-
+if (userButtonEl != null){
 userButtonEl.addEventListener('click', function(){
     inputValue = userButtonEl.textContent;
     console.log(inputValue);
     getApi(inputValue)
 });
-
+}
 
