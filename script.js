@@ -12,7 +12,7 @@ console.log(searchButton);
 
 
 //TODO create a list of options for input
-var locationList = ['New York','San Francisco', 'Seattle', 'Los Angeles', 'Chicago', 'Redmond'];
+var locationList = ['New York','San Francisco', 'Seattle', 'Los Angeles', 'Chicago', 'Redmond', 'Rome','Paris'];
 
 //Create a list of options for search using my list of cities
 for (let i = 0; i < locationList.length; i++) {
@@ -22,17 +22,35 @@ for (let i = 0; i < locationList.length; i++) {
     dataListEl.appendChild(listEl);
 }
 
-renderLastViewedCity();
+var usersInputs = loadObjectFromLocalStorage("usersCities");
 
-//TODO create users buttons  <button class="btn btn-lg city-btn">New York</button>
-function renderLastViewedCity(){
-var lastCity = localStorage.getItem("userCityName");
-var userButtonEl = document.createElement('button');
-userButtonEl.setAttribute('class','btn btn-lg city-btn');
-userButtonEl.setAttribute('id','user-button');
-userButtonEl.textContent = lastCity;
-document.getElementById('custom-btn').appendChild(userButtonEl);
-console.log(lastCity);
+//try alternative
+function saveObjectToLocalStorage(key, obj){
+    localStorage.setItem(key, JSON.stringify(obj));
+}
+
+function loadObjectFromLocalStorage(key){
+    return JSON.parse(localStorage.getItem(key));
+}
+
+
+renderLastViewedCities();
+
+// create users buttons  <button class="btn btn-lg city-btn">New York</button>
+function renderLastViewedCities(){
+    let lastCities = loadObjectFromLocalStorage("usersCities");
+    console.log('loaded array of cities: ' + lastCities);
+    if(lastCities !== null) {
+    for (let i = 0; i < lastCities.length; i++) {
+        var userButtonEl = document.createElement('button');
+        userButtonEl.setAttribute('class','btn btn-lg city-btn');
+        userButtonEl.setAttribute('id','user-button');
+        userButtonEl.textContent = lastCities[i];
+        document.getElementById('custom-btn').appendChild(userButtonEl);
+        console.log(lastCities[i]);
+    }
+}
+
 };
 
 
@@ -71,11 +89,11 @@ fetch(coordinateRequesrURL)
     return response.json();
    })
    .then(function(data){
-    console.log(data)
+    console.log(data);
     console.log(data.list[0].main.temp);
     console.log(data.list[0].wind.speed);
     console.log(data.list[0].main.humidity);
-    console.log(data.list[0].weather.id);
+    
 
     //show current day conditions:
     var currentDate = dayjs(data.list[0].dt_txt).format('MM/DD/YYYY'); 
@@ -85,13 +103,6 @@ fetch(coordinateRequesrURL)
     currentWindEl.textContent = 'Wind: ' + data.list[0].wind.speed + ' MPH';
     currentHumidityEl.textContent = 'Humidity: ' + data.list[0].main.humidity + ' %';
     
-    //TODO show symbol:
-    currentSymbolEl.setAttribute("var", data.list[0].weather.icon);
-    currentSymbolEl.setAttribute("number", data.list[0].weather.id);
-    currentSymbolEl.setAttribute("name", data.list[0].weather.description);
-
-    //Loop over the data to generate 5 day forecast
-    //for (var i=1; i < data.length; i++){}
 
     document.getElementById('day-1-date').textContent = dayjs(data.list[0].dt_txt).format('MM/DD/YYYY');
     document.getElementById('day-1-temp').textContent = 'Temp: ' + data.list[0].main.temp + ' F';
@@ -129,11 +140,29 @@ fetch(coordinateRequesrURL)
 searchButton.addEventListener('click', function(){
     inputValue = inputEl.value;
     console.log(inputValue);
+
+    console.log("searchButton.addEventListener");
+    
+    if (usersInputs.includes(inputValue)){
+        console.log('exist');
+    } else {
+        usersInputs.push(inputValue);
+        var newArray = usersInputs.concat(inputValue);
+        console.log('Updated usersInputs:' + usersInputs);
+        console.log('new array' + newArray);
+
+        
+
+        saveObjectToLocalStorage("usersCities", usersInputs);
+        console.log('JSON to be saved:' + JSON.stringify(usersInputs));
+        //localStorage.setItem("userCityName", JSON.stringify(usersInputs));
+    }
+    //usersInputs.push(inputValue)
 getApi(inputEl.value);
 
 });
 
-//TODO run getApi function when user button clicked
+// run getApi function when user button clicked
 var userButtonEl = document.getElementById("user-button");
 console.log(userButtonEl);
 
@@ -144,12 +173,3 @@ userButtonEl.addEventListener('click', function(){
 });
 
 
-//it was a try to get all citi names
-// const url = 'http://api.geonames.org/searchJSON?q=cities&maxRows=500&username=lenache2022';
-
-// fetch(url)
-//   .then((response) => response.json())
-//   .then((data) => {
-//     const cities = data.geonames.map((city) => city.name);
-//     console.log(cities);
-//   });
