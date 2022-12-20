@@ -16,7 +16,6 @@
   </head>
 
   <body>
-    <!-- create and apply a custom class name "custom-navbar" -->
     <nav class="navbar navbar-expand-lg custom-navbar navbar-dark">
       <div class="container">
         <h1 class="navbar-brand center col-sm-10">Weather Dashboard</h1>
@@ -24,10 +23,9 @@
       </div>
     </nav>
 
-    <!-- create an apply a custom class name "hero" -->
     <div class="py-5">
       <div class="container px-4">
-        <div class="row gx-5"> <!--row row-cols-2-->
+        <div class="row gx-5">
 
         <div class="col-sm-3">
 
@@ -36,20 +34,14 @@
         <label for="exampleDataList" class="form-label"></label>
         <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
         <datalist id="datalistOptions">
-        <option value="San Francisco">
-        <option value="New York">
-        <option value="Seattle">
-        <option value="Los Angeles">
-        <option value="Chicago">
+        <!--<option value="San Francisco">-->
+        
         </datalist>
-        <!-- create and apply a custom class name "custom-btn" -->
+       
         <button class="btn btn-lg custom-btn" id="search-button">Search</button>
-
-        <button class="btn btn-lg city-btn">New York</button>
-        <button class="btn btn-lg city-btn">New York</button>
-        <button class="btn btn-lg city-btn">New York</button>
-        <button class="btn btn-lg city-btn">New York</button>
-        <button class="btn btn-lg city-btn">New York</button>
+        <div id="custom-btn">
+       
+        </div>
         </div>
 
         </div>
@@ -58,9 +50,10 @@
 
             <div class="row custom-row border">
             <h2 id="citi-and-date"></h2>
+            <symbol id="current-symbol"/>
             <div id="current-temp"></div>
-            <div>Wind:</div>
-            <div>Humidity:</div>
+            <div id="current-wind"></div>
+            <div id="current-humidity"></div>
             </div>
 
             <div class="row custom-row">
@@ -70,27 +63,43 @@
                     <div class="row gx-5">
 
                         <div class="col-sm-2 border day-card">
-                        <div>9/14/2022</div>
+                        <div id="day-1-date"></div>
                         <div></div>  
-                        <div>Temp:</div>
-                        <div>Wind:</div>
-                        <div>Humidity:</div>
+                        <div id="day-1-temp"></div>
+                        <div id="day-1-wind"></div>
+                        <div id="day-1-hum"></div>
                         </div>
 
                         <div class="col-sm-2 border day-card">
-                        <div>9/15/2022</div>  
+                        <div id="day-2-date"></div>
+                        <div></div>  
+                        <div id="day-2-temp"></div>
+                        <div id="day-2-wind"></div>
+                        <div id="day-2-hum"></div> 
                         </div>
 
                         <div class="col-sm-2 border day-card">
-                        <div>9/16/2022</div>  
+                        <div id="day-3-date"></div>
+                        <div></div>  
+                        <div id="day-3-temp"></div>
+                        <div id="day-3-wind"></div>
+                        <div id="day-3-hum"></div> 
                         </div>
 
                         <div class="col-sm-2 border day-card">
-                        <div>9/17/2022</div>  
+                        <div id="day-4-date"></div>
+                        <div></div>  
+                        <div id="day-4-temp"></div>
+                        <div id="day-4-wind"></div>
+                        <div id="day-4-hum"></div>  
                         </div>
 
                         <div class="col-sm-2 border day-card">
-                        <div>9/18/2022</div>  
+                        <div id="day-5-date"></div>
+                        <div></div>  
+                        <div id="day-5-temp"></div>
+                        <div id="day-5-wind"></div>
+                        <div id="day-5-hum"></div> 
                         </div>
 
 

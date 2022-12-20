@@ -25,6 +25,8 @@
     background-color: var(--darkblue);
     color: var(--light);
     margin: 5px;
+    padding: 1%;
+    font-size: small;
   }
 
   .city-btn {
