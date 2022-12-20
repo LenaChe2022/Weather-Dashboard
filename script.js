@@ -72,7 +72,7 @@ function getApi(inputValue){
  
 
 //get API to fetch lat and lon of input city
-var coordinateRequesrURL = 'http://api.openweathermap.org/geo/1.0/direct?q=' + inputValue + '&limit=5&appid=c733f29fb2e44ff15762ff2d60996023&units';
+var coordinateRequesrURL = 'https://api.openweathermap.org/geo/1.0/direct?q=' + inputValue + '&limit=5&appid=c733f29fb2e44ff15762ff2d60996023&units';
 fetch(coordinateRequesrURL)
    .then(function (response){
     return response.json();
